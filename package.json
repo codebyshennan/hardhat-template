@@ -1,0 +1,68 @@
+{
+  "name": "partiorhardhat",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "yarn hardhat test",
+    "compile": "yarn hardhat clean && yarn hardhat compile",
+    "coverage": "yarn hardhat coverage",
+    "lint": "yarn lint:ts; yarn lint:sol",
+    "lint:ts": "eslint '*/**/*.{js,ts,tsx}'",
+    "lint:sol": "prettier -c 'contracts/**/*.sol'",
+    "lint-fix": "yarn lint-fix:ts; yarn lint-fix:sol",
+    "lint-fix:ts": "eslint '*/**/*.{js,ts,tsx}' --fix",
+    "lint-fix:sol": "prettier -w 'contracts/**/*.sol'",
+    "postinstall": "husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "lint-staged": {
+    "packages/**/*.{js,jsx,ts,tsx}": [
+      "yarn lint:fix",
+      "yarn prettier:fix"
+    ]
+  },
+  "lint-prepush": {
+    "verbose": false,
+    "tasks": {
+      "packages/**/*.{js,jsx,ts,tsx}": [
+        "yarn lint --quiet",
+        "yarn prettier:check --loglevel silent"
+      ]
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@ethersproject/abi": "^5.4.7",
+    "@ethersproject/providers": "^5.4.7",
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@nomiclabs/hardhat-ethers": "^2.0.0",
+    "@nomiclabs/hardhat-etherscan": "^3.0.0",
+    "@typechain/ethers-v5": "^10.1.0",
+    "@typechain/hardhat": "^6.1.2",
+    "@types/chai": "^4.2.0",
+    "@types/mocha": ">=9.1.0",
+    "@types/node": ">=12.0.0",
+    "chai": "^4.2.0",
+    "ethers": "^5.4.7",
+    "hardhat": "^2.14.0",
+    "hardhat-gas-reporter": "^1.0.8",
+    "husky": "^8.0.3",
+    "solidity-coverage": "^0.8.0",
+    "ts-node": ">=8.0.0",
+    "typechain": "^8.1.0",
+    "typescript": ">=4.5.0",
+    "lint-prepush": "^2.2.1",
+    "lint-staged": "^13.1.1",
+    "prettier": "^2.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}

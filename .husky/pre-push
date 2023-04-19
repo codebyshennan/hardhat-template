@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+printf "\n\e[32mchecking lockfile\e[m\n"
+yarn install --immutable
+printf "\n\e[32mtesting compile\e[m\n\n"
+yarn compile
+printf "\n\e[32mrunning eslint and prettier\e[m\n"
+yarn test

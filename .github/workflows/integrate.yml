@@ -42,7 +42,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn
+        run: yarn install --frozen-lockfile
 
       - name: Artifact build
         run: yarn compile
@@ -62,8 +62,10 @@ jobs:
       - name: Run Echidna Fuzzing
         uses: crytic/echidna-action@v2
         with:
+          solc-version: 0.8.19
           files: contracts/Lock.sol
           contract: EchidnaContract
+          crytic-args: --hardhat-ignore-compile
 
       - name: Run Mythril
         uses: addnab/docker-run-action@v3

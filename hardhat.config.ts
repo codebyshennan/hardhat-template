@@ -18,10 +18,10 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
     },
-    sepolia: {
-      url: process.env.ALCHEMY_URL,
-      accounts: [`0x${process.env.METAMASK_PRIVATE_KEY}`]
-    },
+    // sepolia: {
+    //   url: process.env.ALCHEMY_URL,
+    //   accounts: [`0x${process.env.METAMASK_PRIVATE_KEY}`]
+    // },
   },
   paths: {
     sources: './contracts',

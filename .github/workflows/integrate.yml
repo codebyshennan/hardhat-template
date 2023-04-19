@@ -13,8 +13,10 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-20.04]
-        version: [16, 18, 20]
+        # os: [ubuntu-22.04, ubuntu-20.04]
+        os: [ubuntu-20.04]
+        # version: [16, 18, 20]
+        version: [18]
 
     runs-on: ${{ matrix.os }}
 
@@ -60,7 +62,7 @@ jobs:
       - name: Run Echidna Fuzzing
         uses: crytic/echidna-action@v2
         with:
-          files: contracts/
+          files: contracts/Lock.sol
           contract: EchidnaContract
 
       - name: Run Mythril

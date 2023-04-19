@@ -59,6 +59,11 @@ jobs:
           sarif: results.sarif
           fail-on: none # all | low | medium | high
 
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ steps.slither.outputs.sarif }}
+
       - name: Run Echidna Fuzzing
         uses: crytic/echidna-action@v2
         with:
@@ -72,12 +77,8 @@ jobs:
         with:
           registry: hub.docker.io
           image: mythril/myth:latest
-          options: -v ${{ github.workspace }}:/partior-sc
+          options: -v ${{ github.workspace }}:/contracts
           run: |
-            myth analyze /contracts/Lock.sol
+            myth analyze Lock.sol
 
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ${{ steps.slither.outputs.sarif }}
 #deploy scripts

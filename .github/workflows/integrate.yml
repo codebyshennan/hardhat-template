@@ -61,7 +61,7 @@ jobs:
         uses: crytic/echidna-action@v2
         with:
           files: contracts/
-          contract: Lock
+          contract: EchidnaContract
 
       - name: Run Mythril
         uses: addnab/docker-run-action@v3

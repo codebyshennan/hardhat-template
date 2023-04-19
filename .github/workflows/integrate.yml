@@ -72,9 +72,9 @@ jobs:
         with:
           registry: hub.docker.io
           image: mythril/myth:latest
-          options: -v ${{ github.workspace }}:/tmp
+          options: -v ${{ github.workspace }}:/partior-sc
           run: |
-            analyze /contracts/Lock.sol
+            myth analyze /contracts/Lock.sol
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
